@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Sign in</title>
+   <link rel="Stylesheet" href="Login.css">
+   <script src="https://kit.fontawesome.com/9aec645cf7.js" crossorigin="anonymous"></script>
+</head>
+<body>
+   <nav>
+      <a href="index.html" class="index-link">Home</a>
+   </nav>
+   <div class="container">
+      <div class="form-box">
+         <h1 id="title">Sign Up</h1>
+         <form id="authForm">
+            <div class="input-group">
+               <div class="input-field" id="nameField">
+                  <i class="fa-solid fa-user"></i>
+                  <input type="text" placeholder="Name" id="userName">
+               </div>
+               <div class="input-field">
+                  <i class="fa-solid fa-envelope"></i>
+                  <input type="email" placeholder="Email" id="userEmail">
+               </div>
+               <div class="input-field">
+                  <i class="fa-solid fa-lock"></i>
+                  <input type="password" placeholder="Password" id="userPassword">
+               </div>
+            </div>
+            <div class="btn-field">
+               <button type="button" id="signupBtn">Sign up</button>
+               <button type="button" id="signinBtn">Sign in</button>
+            </div>
+         </form>
+      </div>
+   </div>
+
+   <script>
+      let signupBtn = document.getElementById("signupBtn");
+      let signinBtn = document.getElementById("signinBtn");
+      let nameField = document.getElementById("nameField");
+      let title = document.getElementById("title");
+
+      signinBtn.onclick = function () {
+         nameField.style.maxHeight = "0";
+         title.innerHTML = "Sign In";
+         signupBtn.classList.add("disable");
+         signupBtn.classList.remove("disable");
+      };
+      signupBtn.onclick = function () {
+         nameField.style.maxHeight = "60px";
+         title.innerHTML = "Sign Up";
+         signupBtn.classList.remove("disable");
+         signupBtn.classList.add("disable");
+      };
+   </script>
+
+   <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js"></script>
+   <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyCHnta7PptzHko_EBht5H52oRSbT67xuB0",
+      authDomain: "computer-science-ia-bba75.firebaseapp.com",
+      projectId: "computer-science-ia-bba75",
+      storageBucket: "computer-science-ia-bba75.appspot.com",
+      messagingSenderId: "863859461520",
+      appId: "1:863859461520:web:1f24e37a56dd011ff77715",
+      measurementId: "G-BH4Q0JCDNZ"
+      };
+
+      firebase.initializeApp(firebaseConfig);
+
+      const auth = firebase.auth();
+      const userEmail = document.querySelector("#userEmail");
+      const userPassword = document.querySelector("#userPassword");
+      const authForm = document.querySelector("#authForm");
+
+      const userSignUp = async () => {
+         const signUpEmail = userEmail.value;
+         const signUpPassword = userPassword.value;
+
+         auth
+            .createUserWithEmailAndPassword(signUpEmail, signUpPassword)
+            .then((userCredential) => {
+               const user = userCredential.user;
+               console.log(user);
+               alert("Your account has been created!");
+            })
+            .catch((error) => {
+               const errorCode = error.code;
+               const errorMessage = error.message;
+               console.log(errorCode, errorMessage);
+            });
+      };
+
+      const userSignIn = async () => {
+         const signInEmail = userEmail.value;
+         const signInPassword = userPassword.value;
+
+         auth
+            .signInWithEmailAndPassword(signInEmail, signInPassword)
+            .then((userCredential) => {
+               const user = userCredential.user;
+               alert("You have signed in successfully!");
+            })
+            .catch((error) => {
+               const errorCode = error.code;
+               const errorMessage = error.message;
+               console.log(errorCode, errorMessage);
+            });
+      };
+
+      const userSignOut = async () => {
+         auth.signOut();
+      };
+
+      const checkAuthState = async () => {
+         auth.onAuthStateChanged((user) => {
+            if (user) {
+               authForm.style.display = "none";
+            } else {
+               authForm.style.display = "block";
+            }
+         });
+      };
+
+      checkAuthState();
+
+      const signUpButton = document.getElementById("signupBtn");
+      const signInButton = document.getElementById("signinBtn");
+      const signOutButton = document.getElementById("signoutBtn");
+
+      signUpButton.addEventListener("click", userSignUp);
+      signInButton.addEventListener("click", userSignIn);
+      signOutButton.addEventListener("click", userSignOut);
+   </script>
+</body>
+</html>
+
