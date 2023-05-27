@@ -4,14 +4,15 @@ window.addEventListener("load", () => {
   const list_el = document.querySelector("#tasks");
 
   form.addEventListener("submit", (e) => {
-    e.preventDeafault();
+    e.preventDefault();
 
     const task = input.value;
 
     if (!task) {
-      alert("add task");
+      alert("Please add a task");
       return;
     }
+
     const task_el = document.createElement("div");
     task_el.classList.add("task");
 
@@ -47,13 +48,14 @@ window.addEventListener("load", () => {
     list_el.appendChild(task_el);
 
     input.value = "";
+
     task_edit_el.addEventListener("click", () => {
-      if (task_edit_el.innerText.toLowerCase() == "edit") {
-        task_input_el.removeAttribute("reandonly");
+      if (task_edit_el.innerText.toLowerCase() === "edit") {
+        task_input_el.removeAttribute("readonly");
         task_input_el.focus();
         task_edit_el.innerText = "Save";
       } else {
-        task_input_el.setAttribute("readonly", "reandonly");
+        task_input_el.setAttribute("readonly", "readonly");
         task_edit_el.innerText = "Edit";
       }
     });
