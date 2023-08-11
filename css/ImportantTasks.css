@@ -1,10 +1,8 @@
-nav {
-  color: ivory;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  font-size: 50px;
-  padding-left: 150px;
-  padding-top: 120px;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   text-decoration: none;
 }
 
@@ -18,14 +16,6 @@ nav {
   --brown: #675d49;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  text-decoration: none;
-}
-
 body {
   display: flex;
   flex-direction: column;
@@ -33,9 +23,7 @@ body {
   background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.824)),
     url(https://cdn.shopify.com/s/files/1/0556/1876/4985/products/1_3d9be144-3289-42e8-a611-5c12d6911a21_1024x1024@2x.png?v=1670524739);
   color: ivory;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  text-decoration: none;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
 }
 
 header {
@@ -43,7 +31,6 @@ header {
   max-width: 800px;
   width: 100%;
   margin: 0 auto;
-  text-decoration: none;
 }
 
 header h1 {
@@ -51,20 +38,27 @@ header h1 {
   font-weight: 300;
   color: ivory;
   margin-bottom: 1rem;
+}
+
+.top {
+  position: absolute;
+  top: 70px;
+  left: 100px;
+}
+
+.top a {
+  background-color: rgb(39, 39, 40);
+  color: ivory;
+  font-size: 25px;
+  border: ivory;
+  padding: 10px 20px;
+  font-family: inherit;
   text-decoration: none;
 }
+
 
 #new-task-form {
   display: flex;
-}
-
-input,
-button {
-  appearance: none;
-  border: none;
-  outline: none;
-  background: none;
-  text-decoration: none;
 }
 
 #new-task-input {
@@ -75,12 +69,11 @@ button {
   margin-right: 1rem;
   color: ivory;
   font-size: 1.25rem;
-  text-decoration: none;
+  border: none;
 }
 
 #new-task-input::placeholder {
   color: ivory;
-  text-decoration: none;
 }
 
 #new-task-submit {
@@ -89,7 +82,8 @@ button {
   font-weight: 700;
   cursor: pointer;
   transition: 0.4s;
-  text-decoration: none;
+  background: none;
+  border: none;
 }
 
 #new-task-submit:hover {
@@ -105,7 +99,6 @@ main {
   max-width: 800px;
   width: 100%;
   margin: 0 auto;
-  text-decoration: none;
 }
 
 .task-list {
@@ -133,7 +126,6 @@ main {
   font-size: 1.5rem;
   font-weight: 300;
   margin-bottom: 1rem;
-  text-decoration: none;
 }
 
 #tasks .task {
@@ -143,7 +135,6 @@ main {
   padding: 1rem;
   border-radius: 1rem;
   margin-bottom: 1rem;
-  text-decoration: none;
 }
 
 #tasks .task .content {
@@ -156,12 +147,10 @@ main {
   width: 100%;
   display: block;
   transition: 0.4s;
-  text-decoration: none;
 }
 
 #tasks .task .content .text:not(:read-only) {
   color: #1d1b16;
-  text-decoration: none;
 }
 
 #tasks .task .actions {
@@ -176,27 +165,11 @@ main {
   font-weight: 700;
   text-transform: uppercase;
   transition: 0.4s;
-  text-decoration: none;
 }
 
-#new-task button:hover {
-  opacity: 0.8;
-  text-decoration: none;
-}
-
-#new-task button:active {
-  opacity: 0.6;
-  text-decoration: none;
-}
-
-.task .actions .edit {
-  color: ivory;
-  text-decoration: none;
-}
-
+.task .actions .edit,
 .task .actions .delete {
   color: ivory;
-  text-decoration: none;
 }
 
 .index-link {
@@ -206,12 +179,10 @@ main {
   border: ivory;
   padding: 10px 20px;
   margin-left: 1100px;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
   justify-content: space-between;
   align-items: flex-end;
-  margin-top: 20px; /* Increase or decrease the value as needed */
-  text-decoration: none;
+  margin-top: 20px;
 }
 
 nav {

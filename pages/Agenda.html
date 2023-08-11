@@ -6,14 +6,18 @@
     <link rel="stylesheet" href="/css/Agenda.css" />
   </head>
   <body>
-    <h1>Agenda</h1>
-    <a href="index.html" class="index-link">Home</a>
-    <div class="container">
-      <div id="calendar"></div>
+    <header class="header">
+      <h1 class="header-title">Agenda</h1>
+      <a href="index.html" class="header-link">Home</a>
+    </header>
+
+    <div class="calendar-container">
+      <div id="calendar" class="calendar"></div>
     </div>
-    <div class="content1">
-      <form id="event-form">
-        <h2>Add Event</h2>
+
+    <div class="event-form-container">
+      <form id="event-form" class="event-form">
+        <h2 class="form-title">Add Event</h2>
         <label for="event-title">Title:</label>
         <input type="text" id="event-title" name="event-title" required />
         <label for="event-date">Date:</label>
@@ -27,7 +31,7 @@
           <option value="personal">Personal</option>
           <option value="professional">Professional</option>
         </select>
-        <button type="submit">Add Event</button>
+        <button type="submit" class="submit-button">Add Event</button>
       </form>
     </div>
     <script src="Agenda.js"></script>
